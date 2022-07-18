@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:text="Enter PIN to unlock"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="5dp"
+        android:textAlignment="center"
+        android:paddingRight="5dp"
+        android:layout_margin="50dp"
+        android:textColor="@color/black"
+        tools:ignore="MissingConstraints"></TextView>
+    <EditText
+        android:id="@+id/passCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberPassword"
+        android:background="@drawable/border"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+
+        android:padding="10dp"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        tools:ignore="MissingConstraints"
+        >
+
+        </EditText>
+
+    <Button
+        android:id="@+id/unlockButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unlock"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="110dp"
+        ></Button>
+
+
+</LinearLayout>
