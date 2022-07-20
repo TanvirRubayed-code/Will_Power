@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AlertDialog;
+//import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.View;
@@ -37,22 +40,25 @@ public class SetPIN extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String submittedPIN = editText.getText().toString();
+                int subPIN = Integer.parseInt(submittedPIN);
 
 
                 sharedPreferences = getSharedPreferences(PREF_NAME,MODE_PRIVATE);
                 String setPIN = sharedPreferences.getString(PIN_key,null);
+                int setPINN = Integer.parseInt(setPIN);
 
 
-
-                if(submittedPIN == setPIN){
-                    Toast.makeText(SetPIN.this, submittedPIN,Toast.LENGTH_SHORT ).show();
-                }
-
-
-                else {
+                if(subPIN == setPINN){
                     Intent intent = new Intent(SetPIN.this, QueryActivity.class);
                     startActivity(intent);
+                    Toast.makeText(SetPIN.this, "PIN Successful",Toast.LENGTH_SHORT ).show();
                 }
+                else {
+                    Toast.makeText(SetPIN.this, "Incorrect PIN",Toast.LENGTH_SHORT ).show();
+                }
+
+
+
 
             }
         });
@@ -61,9 +67,9 @@ public class SetPIN extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+
     }
 
-    @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);

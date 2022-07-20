@@ -20,24 +20,24 @@
         android:textAlignment="center"
         android:paddingRight="5dp"
         android:layout_margin="50dp"
-        android:textColor="@color/black"
+        android:textColor="#FB8C00"
         tools:ignore="MissingConstraints"></TextView>
+
     <EditText
         android:id="@+id/passCheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberPassword"
-        android:background="@drawable/border"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:background="@drawable/border"
+        android:inputType="numberPassword"
 
         android:padding="10dp"
-        android:textSize="25dp"
         android:textAlignment="center"
-        tools:ignore="MissingConstraints"
-        >
+        android:textSize="25dp"
+        tools:ignore="MissingConstraints">
 
-        </EditText>
+    </EditText>
 
     <Button
         android:id="@+id/unlockButton"
@@ -47,6 +47,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="110dp"
         android:layout_marginRight="110dp"
+        android:backgroundTint="@color/teal_200"
+        android:textColor="@color/white"
         ></Button>
 
 
