@@ -30,7 +30,7 @@ public class SplashScreen extends AppCompatActivity {
                         sleep(300);
                         progressBar.setProgress(progress);
                     }
-                    sleep(1500);
+                    sleep(500);
                 }
                 catch (Exception e){
                     e.printStackTrace();

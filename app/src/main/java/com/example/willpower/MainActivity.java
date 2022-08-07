@@ -1,5 +1,6 @@
 package com.example.willpower;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 //import android.graphics.Color;
@@ -31,10 +32,12 @@ public class MainActivity extends AppCompatActivity {
         final EditText editText = findViewById(R.id.pinEditText);
 
 
-        sharedPreferences = getSharedPreferences(PREF_NAME,MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
 
         String setPIN = sharedPreferences.getString(PIN_key,null);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
         if(setPIN != null ){
             Intent intent = new Intent(MainActivity.this, SetPIN.class);
             startActivity(intent);
@@ -44,14 +47,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String pinString = editText.getText().toString();
 
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(PIN_key,pinString);
+                if(pinString.length()>4){
 
-                editor.apply();
-                Intent intent = new Intent(MainActivity.this, SetPIN.class);
-                startActivity(intent);
+                    editor.putString(PIN_key,pinString);
+                    editor.commit();
 
-                Toast.makeText(MainActivity.this, "PIN Created Successfully.",Toast.LENGTH_SHORT ).show();
+                    Intent intent = new Intent(MainActivity.this, SetPIN.class);
+                    startActivity(intent);
+
+                    Toast.makeText(MainActivity.this, "PIN created successfully",Toast.LENGTH_SHORT ).show();
+
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Set a PIN more than 4 numbers",Toast.LENGTH_SHORT ).show();
+                }
 
 
 

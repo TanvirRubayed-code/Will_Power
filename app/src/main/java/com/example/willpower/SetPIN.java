@@ -40,21 +40,24 @@ public class SetPIN extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String submittedPIN = editText.getText().toString();
-                int subPIN = Integer.parseInt(submittedPIN);
+                if(submittedPIN.length()>4){
+                    int subPIN = Integer.parseInt(submittedPIN);
+                    sharedPreferences = getSharedPreferences(PREF_NAME,MODE_PRIVATE);
+                    String setPIN = sharedPreferences.getString(PIN_key,null);
+                    int setPINN = Integer.parseInt(setPIN);
 
 
-                sharedPreferences = getSharedPreferences(PREF_NAME,MODE_PRIVATE);
-                String setPIN = sharedPreferences.getString(PIN_key,null);
-                int setPINN = Integer.parseInt(setPIN);
-
-
-                if(subPIN == setPINN){
-                    Intent intent = new Intent(SetPIN.this, QueryActivity.class);
-                    startActivity(intent);
-                    Toast.makeText(SetPIN.this, "PIN Successful",Toast.LENGTH_SHORT ).show();
+                    if(subPIN == setPINN){
+                        Intent intent = new Intent(SetPIN.this, QueryActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(SetPIN.this, "PIN Successful",Toast.LENGTH_SHORT ).show();
+                    }
+                    else {
+                        Toast.makeText(SetPIN.this, "Incorrect PIN",Toast.LENGTH_SHORT ).show();
+                    }
                 }
                 else {
-                    Toast.makeText(SetPIN.this, "Incorrect PIN",Toast.LENGTH_SHORT ).show();
+                    Toast.makeText(SetPIN.this, "Insert a PIN more than 4 digit",Toast.LENGTH_SHORT ).show();
                 }
 
 

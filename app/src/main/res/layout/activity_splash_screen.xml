@@ -38,8 +38,9 @@
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="10dp"
         android:layout_margin="80dp"
+        android:progress="50"
         android:progressTint="#FB8C00"
         android:progressBackgroundTint="@color/teal_200"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
