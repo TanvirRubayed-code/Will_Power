@@ -5,10 +5,17 @@
       <map>
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/drawable/border.xml" value="0.1415" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/drawable/button.xml" value="0.1415" />
+        <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/drawable/call.xml" value="0.1365" />
+        <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/drawable/touch_app.xml" value="0.1" />
+        <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_game_add_congrats.xml" value="0.21" />
+        <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_game_addiction_check.xml" value="0.25" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_habits_query.xml" value="0.1" />
+        <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_internet_addiction_check.xml" value="0.19972826086956522" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_porn_addiction_check.xml" value="0.19972826086956522" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_query.xml" value="0.21" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_set_pin.xml" value="0.25" />
+        <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_smoking_addiction_check.xml" value="0.22" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_splash_screen.xml" value="0.21" />
       </map>
     </option>

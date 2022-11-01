@@ -9,9 +9,13 @@ import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,17 +40,21 @@ public class SetPIN extends AppCompatActivity {
         editText = findViewById(R.id.passCheck);
         unlock = findViewById(R.id.unlockButton);
 
+
+
+        sharedPreferences = getSharedPreferences(PREF_NAME,MODE_PRIVATE);
+        String setPIN = sharedPreferences.getString(PIN_key,null);
+        int setPINN = Integer.parseInt(setPIN);
+
+
         unlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String submittedPIN = editText.getText().toString();
+                int subPIN = Integer.parseInt(submittedPIN);
+
                 if(submittedPIN.length()>4){
-                    int subPIN = Integer.parseInt(submittedPIN);
-                    sharedPreferences = getSharedPreferences(PREF_NAME,MODE_PRIVATE);
-                    String setPIN = sharedPreferences.getString(PIN_key,null);
-                    int setPINN = Integer.parseInt(setPIN);
-
-
                     if(subPIN == setPINN){
                         Intent intent = new Intent(SetPIN.this, QueryActivity.class);
                         startActivity(intent);
@@ -68,6 +76,14 @@ public class SetPIN extends AppCompatActivity {
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
+        }
+
+        //Change status bar coclor
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.teal_700));
         }
 
 

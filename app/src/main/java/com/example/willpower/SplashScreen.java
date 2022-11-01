@@ -26,11 +26,11 @@ public class SplashScreen extends AppCompatActivity {
         Thread thread = new Thread(){
             public void  run(){
                 try {
-                    for (progress = 10;progress<=100;progress+=10) {
-                        sleep(300);
+                    for (progress = 1;progress<=100;progress+=1) {
+                        sleep(10);
                         progressBar.setProgress(progress);
                     }
-                    sleep(500);
+
                 }
                 catch (Exception e){
                     e.printStackTrace();
