@@ -52,8 +52,14 @@ public class SetPIN extends AppCompatActivity {
             public void onClick(View view) {
 
                 String submittedPIN = editText.getText().toString();
-                int subPIN = Integer.parseInt(submittedPIN);
+                int subPIN = 0;
 
+                try {
+                    subPIN = Integer.parseInt(submittedPIN);
+                }
+                catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"Exception "+e,Toast.LENGTH_SHORT).show();
+                }
                 if(submittedPIN.length()>4){
                     if(subPIN == setPINN){
                         Intent intent = new Intent(SetPIN.this, QueryActivity.class);
