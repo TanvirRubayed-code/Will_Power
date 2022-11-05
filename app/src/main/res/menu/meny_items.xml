@@ -5,6 +5,10 @@
         android:id="@+id/settingsId"
         android:title="Settings"
         app:showAsAction="never"
+        ></item> <item
+        android:id="@+id/otherAddiction"
+        android:title="Other Addictions"
+        app:showAsAction="never"
         ></item>
     <item
         android:id="@+id/psychiatristAboutId"

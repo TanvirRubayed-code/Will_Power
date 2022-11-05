@@ -99,11 +99,14 @@ public class PornAddictionCheck extends AppCompatActivity {
                 }
                 else {
                     if(pornAddicted>5){
-                        Intent intent = new Intent(PornAddictionCheck.this, MainTimePage.class);
+                        Intent intent = new Intent(PornAddictionCheck.this, RiskWarning.class);
+                        intent.putExtra("addiction","porn");
                         startActivity(intent);
+                        finish();
                     }
                     else {
                         Intent intent = new Intent(PornAddictionCheck.this, GameAddCongrats.class);
+                        intent.putExtra("addiction","porn");
                         startActivity(intent);
                         finish();
                     }

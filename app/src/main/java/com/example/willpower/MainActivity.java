@@ -19,8 +19,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
 
-    SharedPreferences sharedPreferences ;
-
+    SharedPreferences sharedPreferences;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
 
-        String setPIN = sharedPreferences.getString(PIN_key,null);
+        String setPIN = sharedPreferences.getString(PIN_key, null);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if(setPIN != null ){
+        if (setPIN != null) {
             Intent intent = new Intent(MainActivity.this, SetPIN.class);
             startActivity(intent);
         }
@@ -51,33 +50,29 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String pinString = editText.getText().toString();
 
-                if(pinString.length()>4){
+                if (pinString.length() > 4) {
 
-                    editor.putString(PIN_key,pinString);
+                    editor.putString(PIN_key, pinString);
                     editor.commit();
+
+                    //game level preference created
+
+                    SharedPreferences sp = getSharedPreferences("glevel",MODE_PRIVATE);
+                    SharedPreferences.Editor edit = sp.edit();
+                    edit.putInt("level",0);
+                    edit.commit();
 
                     Intent intent = new Intent(MainActivity.this, SetPIN.class);
                     startActivity(intent);
 
-                    Toast.makeText(MainActivity.this, "PIN created successfully",Toast.LENGTH_SHORT ).show();
+                    Toast.makeText(MainActivity.this, "PIN created successfully", Toast.LENGTH_SHORT).show();
 
+                } else {
+                    Toast.makeText(MainActivity.this, "Set a PIN more than 4 numbers", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    Toast.makeText(MainActivity.this, "Set a PIN more than 4 numbers",Toast.LENGTH_SHORT ).show();
-                }
-
-
 
             }
         });
-//button style
-
-
-
-
-//        button style end
-
-
 
 
         if (getSupportActionBar() != null) {
@@ -92,7 +87,4 @@ public class MainActivity extends AppCompatActivity {
             window.setStatusBarColor(this.getResources().getColor(R.color.teal_700));
         }
     }
-
-
-
 }

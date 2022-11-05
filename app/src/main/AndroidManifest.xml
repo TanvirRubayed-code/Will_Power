@@ -14,26 +14,45 @@
         android:theme="@style/Theme.WILLPOWER"
         tools:targetApi="31">
         <activity
+            android:name=".RiskWarning"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
+        <activity
             android:name=".PsychiatristInfo"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".MainTimePage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".GameAddCongrats"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".InternetAddictionCheck"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".PornAddictionCheck"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".SmokingAddictionCheck"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".GameAddictionCheck"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".HabitsQuery"
             android:exported="false"

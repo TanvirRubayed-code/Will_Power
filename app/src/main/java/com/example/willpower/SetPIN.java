@@ -62,9 +62,10 @@ public class SetPIN extends AppCompatActivity {
                 }
                 if(submittedPIN.length()>4){
                     if(subPIN == setPINN){
+
+
                         Intent intent = new Intent(SetPIN.this, QueryActivity.class);
                         startActivity(intent);
-                        Toast.makeText(SetPIN.this, "PIN Successful",Toast.LENGTH_SHORT ).show();
                     }
                     else {
                         Toast.makeText(SetPIN.this, "Incorrect PIN",Toast.LENGTH_SHORT ).show();

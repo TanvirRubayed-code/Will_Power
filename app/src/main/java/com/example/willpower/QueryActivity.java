@@ -26,7 +26,7 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
 
     ActionBar actionBar;
     CheckBox checkBox1, checkBox2, checkBox3, checkBox4;
-    Button habitSelectButton ;
+    Button habitSelectButton;
 
 
     @Override
@@ -43,6 +43,15 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
         habitSelectButton.setOnClickListener(this);
 
 
+        SharedPreferences sharedPreferences = getSharedPreferences("startTime", MODE_PRIVATE);
+        String addiction = sharedPreferences.getString("addiction", "");
+        String setTime = sharedPreferences.getString("start", "");
+        if (!addiction.isEmpty()) {
+            Intent intent = new Intent(QueryActivity.this, MainTimePage.class);
+            intent.putExtra("sendTime", setTime);
+            startActivity(intent);
+            finish();
+        }
 
 
         if (getSupportActionBar() != null) {
@@ -73,74 +82,70 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
 
 
         });
-        builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
                 //if user select "No", just cancel this dialog and continue with app
                 dialog.cancel();
             }
         });
-        AlertDialog alert=builder.create();
+        AlertDialog alert = builder.create();
         alert.show();
     }
 
     @Override
     public void onClick(View view) {
 
-        if(view.getId() == R.id.habitSelectButton){
+        if (view.getId() == R.id.habitSelectButton) {
             saveSelectedHabit();
         }
 
     }
 
     private void saveSelectedHabit() {
-        boolean game =  checkBox1.isChecked();
-        boolean smoking =  checkBox2.isChecked();
-        boolean porn =  checkBox3.isChecked();
-        boolean internet =  checkBox4.isChecked();
+        boolean game = checkBox1.isChecked();
+        boolean smoking = checkBox2.isChecked();
+        boolean porn = checkBox3.isChecked();
+        boolean internet = checkBox4.isChecked();
         int counterForSelect = 0;
 
-        if(game) {
+        if (game) {
             counterForSelect++;
         }
-        if(smoking){
+        if (smoking) {
             counterForSelect++;
-        }if(porn){
+        }
+        if (porn) {
             counterForSelect++;
-        }if(internet){
+        }
+        if (internet) {
             counterForSelect++;
         }
 
-        if(counterForSelect>1){
-            Toast.makeText(getApplicationContext(),"Don't select more than one habit at once",Toast.LENGTH_SHORT).show();
+        if (counterForSelect > 1) {
+            Toast.makeText(getApplicationContext(), "Don't select more than one habit at once", Toast.LENGTH_SHORT).show();
 
-        }
-        else {
+        } else {
             SharedPreferences sharedPref = getSharedPreferences("saveHabit", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean("gameAddiction",game);
-            editor.putBoolean("smoking",smoking);
-            editor.putBoolean("pornAddiction",porn);
-            editor.putBoolean("internetAddiction",internet);
+            editor.putBoolean("gameAddiction", game);
+            editor.putBoolean("smoking", smoking);
+            editor.putBoolean("pornAddiction", porn);
+            editor.putBoolean("internetAddiction", internet);
             editor.commit();
-            if(game){
+            if (game) {
                 Intent intent = new Intent(QueryActivity.this, GameAddictionCheck.class);
                 startActivity(intent);
-            }
-            else if(smoking){
+            } else if (smoking) {
                 Intent intent = new Intent(QueryActivity.this, SmokingAddictionCheck.class);
                 startActivity(intent);
-            }
-            else if(porn){
+            } else if (porn) {
                 Intent intent = new Intent(QueryActivity.this, PornAddictionCheck.class);
                 startActivity(intent);
-            }
-            else if(internet){
+            } else if (internet) {
                 Intent intent = new Intent(QueryActivity.this, InternetAddictionCheck.class);
                 startActivity(intent);
             }
-
-
         }
 
     }

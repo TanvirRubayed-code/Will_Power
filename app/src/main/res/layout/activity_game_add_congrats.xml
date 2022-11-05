@@ -70,7 +70,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#D81B60"
-                android:text="Use our Apps"
+                android:text="Use this Apps"
                 ></TextView>
         </LinearLayout>
 

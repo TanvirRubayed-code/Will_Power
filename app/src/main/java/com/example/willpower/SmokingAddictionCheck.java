@@ -23,6 +23,7 @@ public class SmokingAddictionCheck<set> extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smoking_addiction_check);
 
@@ -78,12 +79,15 @@ public class SmokingAddictionCheck<set> extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Select all the options",Toast.LENGTH_SHORT).show();
                 }else {
                     if(smokingAddict>=3){
-                        Intent intent = new Intent(SmokingAddictionCheck.this, MainTimePage.class);
+                        Intent intent = new Intent(SmokingAddictionCheck.this, RiskWarning.class);
+                        intent.putExtra("addiction","smoke");
                         startActivity(intent);
+                        finish();
 
                     }
                     else {
                         Intent intent = new Intent(SmokingAddictionCheck.this, GameAddCongrats.class);
+                        intent.putExtra("addiction","smoke");
                         startActivity(intent);
                         finish();
                     }

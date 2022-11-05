@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -94,12 +95,16 @@ public class GameAddictionCheck extends AppCompatActivity {
                 }
                 else {
                     if(counterGameAddict>4){
-                        Intent intent = new Intent(GameAddictionCheck.this, MainTimePage.class);
+
+                        Intent intent = new Intent(GameAddictionCheck.this, RiskWarning.class);
+                        intent.putExtra("addiction","game");
                         startActivity(intent);
+                        finish();
 
                     }
                     else {
                         Intent intent = new Intent(GameAddictionCheck.this, GameAddCongrats.class);
+                        intent.putExtra("addiction","game");
                         startActivity(intent);
                         finish();
                     }
