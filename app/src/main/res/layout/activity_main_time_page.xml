@@ -11,8 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        >
+        android:paddingBottom="20dp">
+
         <ProgressBar
             android:id="@+id/timer_progress_id"
             android:layout_width="350dp"
@@ -40,18 +40,17 @@
             tools:ignore="MissingConstraints"></ProgressBar>
 
 
-
         <TextView
             android:id="@+id/days_countdown_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/alata"
-            android:textStyle="bold"
             android:text="-- days left"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/timer_progress_id"
             app:layout_constraintEnd_toEndOf="@+id/timer_progress_id"
             app:layout_constraintStart_toStartOf="@+id/timer_progress_id"
@@ -62,10 +61,10 @@
             android:id="@+id/time_coundown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00:00:00"
             android:paddingTop="10dp"
-            android:textSize="16sp"
+            android:text="00:00:00"
             android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/days_countdown_timer"></TextView>
@@ -75,19 +74,37 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="4dp"
             android:orientation="vertical"
+            android:background="#BBDEFB"
             app:layout_constraintTop_toBottomOf="@+id/timer_progress_id"
             tools:ignore="MissingConstraints">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginBottom="3dp"
-                android:src="@drawable/to_do">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            </ImageView>
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginBottom="3dp"
+                    android:src="@drawable/to_do">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingLeft="8dp"
+                    android:text="Daily task"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -99,9 +116,8 @@
                     android:id="@+id/taskshowTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text=" A Simple Task. time limit per test. 5 seconds. memory limit per test ... This task is very simple. Given a string S of length n and q queries each query"
-                    android:textColor="@color/white">
+                    android:textColor="@color/white"
+                    android:textSize="18sp">
 
                 </TextView>
             </LinearLayout>
@@ -113,20 +129,38 @@
             android:id="@+id/motivation_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="4dp"
             android:orientation="vertical"
-            android:paddingTop="15dp"
+            android:layout_marginTop="8dp"
+            android:background="#BBDEFB"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:ignore="MissingConstraints">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginBottom="3dp"
-                android:src="@drawable/motivation">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            </ImageView>
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginBottom="3dp"
+                    android:src="@drawable/motivation">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingLeft="8dp"
+                    android:text="Motivation"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -135,11 +169,12 @@
                 android:padding="8dp">
 
                 <TextView
+                    android:id="@+id/motivationTextviewID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text=" A Simple Task. time limit per test. 5 seconds. memory limit per test ... This task is very simple. Given a string S of length n and q queries each query"
-                    android:textColor="@color/white">
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="18sp">
 
                 </TextView>
             </LinearLayout>
@@ -148,22 +183,41 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/resource_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:orientation="vertical"
-            android:paddingTop="15dp"
+            android:layout_marginTop="8dp"
+            android:padding="4dp"
+            android:background="#BBDEFB"
             app:layout_constraintTop_toBottomOf="@+id/motivation_layout"
             tools:ignore="MissingConstraints">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginBottom="3dp"
-                android:src="@drawable/document">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            </ImageView>
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginBottom="3dp"
+                    android:src="@drawable/document">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingLeft="8dp"
+                    android:text="Resources"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -172,22 +226,45 @@
                 android:padding="8dp">
 
                 <TextView
+                    android:id="@+id/resourcesShowTextViewID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text=" A Simple Task. time limit per test. 5 seconds. memory limit per test ... This task is very simple. Given a string S of length n and q queries each query"
-                    android:textColor="@color/white">
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:linksClickable="true"
+                    android:textSize="18sp">
 
                 </TextView>
             </LinearLayout>
 
 
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/resource_layout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:padding="4dp"
+            android:background="#BBDEFB"
+            android:gravity="center"
+            >
+            <TextView
+                android:id="@+id/inspiratinTextviewID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="@font/alata"
+                android:text=""
+                ></TextView>
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </ScrollView>

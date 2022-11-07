@@ -3,7 +3,6 @@ package com.example.willpower;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -46,17 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean checkDataBase(Context context) {
-//        File dbFile = new File(DB_PATH + DB_NAME);
-//        File dbFile = context.getDatabasePath(DB_NAME);
-//        if (dbFile.exists()){
-//
-//            Toast.makeText(context, "db exist not created", Toast.LENGTH_SHORT).show();
-//        }
-//        else {
-//            Toast.makeText(context, "db created"+dbFile, Toast.LENGTH_SHORT).show();
-//        }
-//
-//        return dbFile.exists();
+
 
         SQLiteDatabase checkDB = null;
         try {
@@ -65,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         } catch (Exception e)
         {
-            Toast.makeText(context, "db not exist checkd 2", Toast.LENGTH_SHORT).show();
+
         }
         if (checkDB != null) {
             checkDB.close();
@@ -109,6 +98,100 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mOutput.flush();
         mOutput.close();
         mInput.close();
+    }
+
+    public String selectedTaskForDay(String addiction, int day){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        int dayC = day + 1;
+        String addictionS = addiction.toLowerCase();
+        String data = null;
+        try {
+            cursor = db.rawQuery("SELECT * FROM "+addictionS+"_task WHERE id="+dayC, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    // get  the  data into array,or class variable
+                    data=cursor.getString(1);
+                } while (cursor.moveToNext());
+            }
+            db.close();
+        } catch (Exception e) {
+            Toast.makeText(context, ""+e, Toast.LENGTH_SHORT).show();
+
+        }
+
+        return data;
+    }
+
+    public String selectResourceFortheDay(String addiction, int day){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        int dayC = day + 1;
+        String addictionS = addiction.toLowerCase();
+        String resources = null;
+
+        try {
+            cursor = db.rawQuery("SELECT * FROM "+addictionS+"_resource WHERE id="+dayC, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    // get  the  data into array,or class variable
+                    resources=cursor.getString(1);
+                } while (cursor.moveToNext());
+            }
+            db.close();
+        } catch (Exception e) {
+            Toast.makeText(context, ""+e, Toast.LENGTH_SHORT).show();
+
+        }
+
+        return resources;
+    }
+
+    public String selectRandomInspiration(int num){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        String randomInspiration = null;
+        try {
+            cursor = db.rawQuery("SELECT * from inspiraton where id="+num, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    // get  the  data into array,or class variable
+                    randomInspiration=cursor.getString(1);
+                } while (cursor.moveToNext());
+            }
+            db.close();
+        } catch (Exception e) {
+            Toast.makeText(context, ""+e, Toast.LENGTH_SHORT).show();
+
+        }
+        return randomInspiration;
+    }
+
+    public String selectMotivationForDay(String addiction, int day){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        int dayC = day + 1;
+        String addictionS = addiction.toLowerCase();
+        String motivation = null;
+        try {
+            cursor = db.rawQuery("SELECT * FROM "+addictionS+"_motivation WHERE id="+dayC, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    // get  the  data into array,or class variable
+                    motivation=cursor.getString(1);
+                } while (cursor.moveToNext());
+            }
+            db.close();
+        } catch (Exception e) {
+            Toast.makeText(context, ""+e, Toast.LENGTH_SHORT).show();
+
+        }
+
+        return motivation;
     }
 
 

@@ -97,14 +97,14 @@ public class GameAddictionCheck extends AppCompatActivity {
                     if(counterGameAddict>4){
 
                         Intent intent = new Intent(GameAddictionCheck.this, RiskWarning.class);
-                        intent.putExtra("addiction","game");
+                        intent.putExtra("addiction","Game");
                         startActivity(intent);
                         finish();
 
                     }
                     else {
                         Intent intent = new Intent(GameAddictionCheck.this, GameAddCongrats.class);
-                        intent.putExtra("addiction","game");
+                        intent.putExtra("addiction","Game");
                         startActivity(intent);
                         finish();
                     }

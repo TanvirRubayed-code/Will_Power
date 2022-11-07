@@ -16,6 +16,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,19 +32,20 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainTimePage extends AppCompatActivity {
+public class MainTimePage<addiction> extends AppCompatActivity {
 
     ProgressBar timerProgressBar, daysProgressBar;
-    TextView dayTimeCoundown, daysCoundown , taskShow;
+    TextView dayTimeCoundown, daysCoundown , taskTextView, motivationTextview, resourcesShowTextView, inspiratinTextview;
 
 
     long startedLocalTime;
     int level;
-
-
+    String addiction_sec;
+    int day;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,52 +57,10 @@ public class MainTimePage extends AppCompatActivity {
         dayTimeCoundown = findViewById(R.id.time_coundown);
         timerProgressBar = findViewById(R.id.timer_progress_id);
         daysProgressBar = findViewById(R.id.days_progress_id);
-
-
-
-        //
-
-
-//        MyDatabaseHelper myDatabaseHelper = null;
-//        try {
-//            myDatabaseHelper = new MyDatabaseHelper(this);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        ArrayList<String> values;
-//        if(myDatabaseHelper.checkDataBase()){
-//            Toast.makeText(this, "ex", Toast.LENGTH_SHORT).show();
-//        }
-
-        try {
-            DatabaseHelper dbHelper = new DatabaseHelper(this);
-            Cursor cursor = null;
-            if(dbHelper.checkDataBase(this)){
-                try {
-                     cursor = dbHelper.getValues();
-                    Toast.makeText(this, ""+cursor.getCount(), Toast.LENGTH_SHORT).show();
-                }
-                catch (Exception e){
-                    Toast.makeText(this, ""+cursor.getCount(), Toast.LENGTH_LONG).show();
-                }
-//
-            }
-            else {
-                Toast.makeText(this, "DB not exist call from main page", Toast.LENGTH_SHORT).show();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-
-
-
-
-
-
-
-
-
+        taskTextView = findViewById(R.id.taskshowTextView);
+        motivationTextview = findViewById(R.id.motivationTextviewID);
+        resourcesShowTextView = findViewById(R.id.resourcesShowTextViewID);
+        inspiratinTextview = findViewById(R.id.inspiratinTextviewID);
 
 
 
@@ -112,10 +73,11 @@ public class MainTimePage extends AppCompatActivity {
         }
 
 
-        // timer start to show the watch countdown
+        // -----------------------------timer start to show the watch countdown
         Timer timer = new Timer();
         timerProgressBar.setMax(24 * 60 * 60);
         daysProgressBar.setMax( 21 * 24 * 60 * 60);
+
 
 
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -129,7 +91,7 @@ public class MainTimePage extends AppCompatActivity {
 
                 if(newTime-startedLocalTime==86399){
                     SharedPreferences sharedPreferences = getSharedPreferences("startTime",MODE_PRIVATE);
-                    int day = sharedPreferences.getInt("days",0);
+                    day = sharedPreferences.getInt("days",0);
                     day++;
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt("days",day);
@@ -176,6 +138,25 @@ public class MainTimePage extends AppCompatActivity {
 
 
 
+
+        // ---------------------- Selected Addiction  ----------------
+
+
+        try {
+            SharedPreferences sharedAddict = getSharedPreferences("startTime",MODE_PRIVATE);
+            addiction_sec = sharedAddict.getString("addiction",null);
+            if(addiction_sec!=null){
+                readTaskData(addiction_sec,day);
+                readMotivationData(addiction_sec,day);
+                readResourcesData(addiction_sec,day);
+                readRandomInspiration();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
         // Define ActionBar object
         ActionBar actionBar;
         actionBar = getSupportActionBar();
@@ -196,9 +177,38 @@ public class MainTimePage extends AppCompatActivity {
 
     }
 
-    private void showData(String title, String result) {
-        taskShow.setText(""+result);
+    private void readRandomInspiration() throws IOException {
+        DatabaseHelper dbHelp = new DatabaseHelper(this);
+
+        int random = (int) (Math.random()*57);
+        String resource = dbHelp.selectRandomInspiration(random);
+
+        inspiratinTextview.setText(resource);
     }
+
+    private void readResourcesData(String addiction, int day) throws IOException {
+        DatabaseHelper dbHelp = new DatabaseHelper(this);
+        String resource = dbHelp.selectResourceFortheDay(addiction,day);
+//        String resource = "click on <a href=\"http://hello.com\">hello</a>";
+        resourcesShowTextView.setText(Html.fromHtml(resource));
+        resourcesShowTextView.setMovementMethod(LinkMovementMethod.getInstance());
+
+    }
+
+    private void readMotivationData(String addiction, int day) throws IOException {
+        DatabaseHelper dbHelp = new DatabaseHelper(this);
+        String motivation = dbHelp.selectMotivationForDay(addiction,day);
+        motivationTextview.setText(motivation);
+    }
+
+    private void readTaskData(String addiction,int day) throws IOException {
+        DatabaseHelper dbHelp = new DatabaseHelper(this);
+        String task = dbHelp.selectedTaskForDay(addiction,day);
+        taskTextView.setText(task);
+    }
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -251,7 +261,7 @@ public class MainTimePage extends AppCompatActivity {
     }
 
 
-    // Option Menu ____________________
+    // -------------------------Option Menu ____________________
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -316,6 +326,12 @@ public class MainTimePage extends AppCompatActivity {
             alert.show();
 
 
+            return true;
+        }
+
+        if (item.getItemId() == R.id.addictionMenu) {
+            Intent intent = new Intent(MainTimePage.this, SelectedAddictionDetails.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -80,14 +80,14 @@ public class SmokingAddictionCheck<set> extends AppCompatActivity {
                 }else {
                     if(smokingAddict>=3){
                         Intent intent = new Intent(SmokingAddictionCheck.this, RiskWarning.class);
-                        intent.putExtra("addiction","smoke");
+                        intent.putExtra("addiction","Smoking");
                         startActivity(intent);
                         finish();
 
                     }
                     else {
                         Intent intent = new Intent(SmokingAddictionCheck.this, GameAddCongrats.class);
-                        intent.putExtra("addiction","smoke");
+                        intent.putExtra("addiction","Smoking");
                         startActivity(intent);
                         finish();
                     }

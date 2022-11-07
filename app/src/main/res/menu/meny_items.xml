@@ -2,10 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/addictionMenu"
+        app:showAsAction="never"
+        android:title="Selected Addiction"></item>
+    <item
         android:id="@+id/settingsId"
         android:title="Settings"
         app:showAsAction="never"
-        ></item> <item
+        ></item>
+    <item
         android:id="@+id/otherAddiction"
         android:title="Other Addictions"
         app:showAsAction="never"

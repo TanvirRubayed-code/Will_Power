@@ -95,14 +95,14 @@ public class InternetAddictionCheck extends AppCompatActivity {
                 else {
                     if(internetAddicted>4){
                         Intent intent = new Intent(InternetAddictionCheck.this, RiskWarning.class);
-                        intent.putExtra("addiction","internet");
+                        intent.putExtra("addiction","Internet");
                         startActivity(intent);
                         finish();
 
                     }
                     else {
                         Intent intent = new Intent(InternetAddictionCheck.this, GameAddCongrats.class);
-                        intent.putExtra("addiction","internet");
+                        intent.putExtra("addiction","Internet");
                         startActivity(intent);
                         finish();
                     }
