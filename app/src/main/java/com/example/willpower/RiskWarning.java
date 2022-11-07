@@ -24,15 +24,6 @@ public class RiskWarning extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_risk_warning);
 
-        //update level from warning page
-        SharedPreferences sp = getSharedPreferences("glevel", MODE_PRIVATE);
-        SharedPreferences.Editor edit = sp.edit();
-
-        int level = sp.getInt("level", 0);
-        level++;
-
-        edit.putInt("level", level);
-        edit.commit();
 
 
         // receive data from putExtra method
@@ -50,6 +41,17 @@ public class RiskWarning extends AppCompatActivity {
         highRiskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //update level from warning page
+                SharedPreferences sp = getSharedPreferences("glevel", MODE_PRIVATE);
+                SharedPreferences.Editor edit = sp.edit();
+
+                int level = sp.getInt("level", 0);
+                level++;
+
+                edit.putInt("level", level);
+                edit.commit();
+
 
                 //set local started time to sharedpreferences
                 long startedLocalTime;

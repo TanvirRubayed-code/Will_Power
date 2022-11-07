@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -25,8 +27,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,7 +36,7 @@ import java.util.TimerTask;
 public class MainTimePage extends AppCompatActivity {
 
     ProgressBar timerProgressBar, daysProgressBar;
-    TextView dayTimeCoundown, daysCoundown, demoTextview;
+    TextView dayTimeCoundown, daysCoundown , taskShow;
 
 
     long startedLocalTime;
@@ -52,7 +54,54 @@ public class MainTimePage extends AppCompatActivity {
         dayTimeCoundown = findViewById(R.id.time_coundown);
         timerProgressBar = findViewById(R.id.timer_progress_id);
         daysProgressBar = findViewById(R.id.days_progress_id);
-        demoTextview = findViewById(R.id.demoTextviewid);
+
+
+
+        //
+
+
+//        MyDatabaseHelper myDatabaseHelper = null;
+//        try {
+//            myDatabaseHelper = new MyDatabaseHelper(this);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        ArrayList<String> values;
+//        if(myDatabaseHelper.checkDataBase()){
+//            Toast.makeText(this, "ex", Toast.LENGTH_SHORT).show();
+//        }
+
+        try {
+            DatabaseHelper dbHelper = new DatabaseHelper(this);
+            Cursor cursor = null;
+            if(dbHelper.checkDataBase(this)){
+                try {
+                     cursor = dbHelper.getValues();
+                    Toast.makeText(this, ""+cursor.getCount(), Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e){
+                    Toast.makeText(this, ""+cursor.getCount(), Toast.LENGTH_LONG).show();
+                }
+//
+            }
+            else {
+                Toast.makeText(this, "DB not exist call from main page", Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+
+
+
+
+
+
+
+
+
+
+
 
         SharedPreferences sharedPreferences = getSharedPreferences("startTime", MODE_PRIVATE);
 
@@ -123,7 +172,6 @@ public class MainTimePage extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("glevel",MODE_PRIVATE);
         if (sp.contains("level")) {
             level = sp.getInt("level",0);
-            level++;
         }
 
 
@@ -146,6 +194,10 @@ public class MainTimePage extends AppCompatActivity {
         }
 
 
+    }
+
+    private void showData(String title, String result) {
+        taskShow.setText(""+result);
     }
 
     @Override
@@ -187,7 +239,6 @@ public class MainTimePage extends AppCompatActivity {
             public void run() {
                 String time = hour + ":" + minute + ":" + seconds;
                 dayTimeCoundown.setText(time);
-                demoTextview.setText(String.valueOf(t-startedLocalTime));
 
                 // handle days counter
                 SharedPreferences sharedPreferences = getSharedPreferences("startTime",MODE_PRIVATE);

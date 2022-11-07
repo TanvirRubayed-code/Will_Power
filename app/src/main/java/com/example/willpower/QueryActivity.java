@@ -21,6 +21,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+
 public class QueryActivity extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -29,10 +36,14 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
     Button habitSelectButton;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query);
+
+
+
 
         checkBox1 = findViewById(R.id.check1);
         checkBox2 = findViewById(R.id.check2);
@@ -64,6 +75,10 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
             window.setStatusBarColor(this.getResources().getColor(R.color.teal_700));
         }
     }
+
+
+
+
 
 
     @Override

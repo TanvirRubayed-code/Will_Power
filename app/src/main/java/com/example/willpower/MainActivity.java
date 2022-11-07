@@ -16,6 +16,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -87,4 +93,6 @@ public class MainActivity extends AppCompatActivity {
             window.setStatusBarColor(this.getResources().getColor(R.color.teal_700));
         }
     }
+
+
 }

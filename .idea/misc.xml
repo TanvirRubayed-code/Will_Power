@@ -8,6 +8,7 @@
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/drawable/call.xml" value="0.1365" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/drawable/day_circle.xml" value="0.18" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/drawable/timer_circle.xml" value="0.1365" />
+        <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/drawable/to_do.xml" value="0.1355" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/drawable/touch_app.xml" value="0.1" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_game_add_congrats.xml" value="0.21" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_game_addiction_check.xml" value="0.25" />
@@ -23,6 +24,8 @@
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_smoking_addiction_check.xml" value="0.22" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/layout/activity_splash_screen.xml" value="0.21" />
         <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/menu/meny_items.xml" value="0.25" />
+        <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1355" />
+        <entry key="..\:/Users/tanvi/AndroidStudioProjects/WILLPOWER2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1355" />
       </map>
     </option>
   </component>

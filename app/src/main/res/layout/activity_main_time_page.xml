@@ -1,79 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:scrollbars="none"
     tools:context=".MainTimePage">
 
-
-    <ProgressBar
-        android:id="@+id/timer_progress_id"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:indeterminateOnly="false"
-        android:paddingBottom="10dp"
-        android:progressDrawable="@drawable/timer_circle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"></ProgressBar>
-
-    <ProgressBar
-        android:id="@+id/days_progress_id"
-        android:layout_width="380dp"
-        android:layout_height="350dp"
-        android:indeterminateOnly="false"
-        android:paddingBottom="10dp"
-        android:progress="80"
-        android:progressDrawable="@drawable/day_circle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"></ProgressBar>
-
-    <TextView
-        android:id="@+id/days_countdown_timer"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:fontFamily="@font/alata"
-        android:textStyle="bold"
-        android:text="-- days left"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/timer_progress_id"
-        app:layout_constraintEnd_toEndOf="@+id/timer_progress_id"
-        app:layout_constraintStart_toStartOf="@+id/timer_progress_id"
-        app:layout_constraintTop_toTopOf="@+id/timer_progress_id"
-        tools:ignore="MissingConstraints"></TextView>
+        android:paddingBottom="20dp"
+        >
+        <ProgressBar
+            android:id="@+id/timer_progress_id"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:indeterminateOnly="false"
+            android:paddingBottom="10dp"
+            android:progressDrawable="@drawable/timer_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"></ProgressBar>
 
-    <TextView
-        android:id="@+id/time_coundown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="00:00:00"
-        android:paddingTop="10dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/days_countdown_timer"></TextView>
-
-    <TextView
-        android:id="@+id/demoTextviewid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timer_progress_id"></TextView>
+        <ProgressBar
+            android:id="@+id/days_progress_id"
+            android:layout_width="380dp"
+            android:layout_height="350dp"
+            android:indeterminateOnly="false"
+            android:paddingBottom="10dp"
+            android:progress="80"
+            android:progressDrawable="@drawable/day_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"></ProgressBar>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/days_countdown_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/alata"
+            android:textStyle="bold"
+            android:text="-- days left"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/timer_progress_id"
+            app:layout_constraintEnd_toEndOf="@+id/timer_progress_id"
+            app:layout_constraintStart_toStartOf="@+id/timer_progress_id"
+            app:layout_constraintTop_toTopOf="@+id/timer_progress_id"
+            tools:ignore="MissingConstraints"></TextView>
+
+        <TextView
+            android:id="@+id/time_coundown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00"
+            android:paddingTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/days_countdown_timer"></TextView>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/timer_progress_id"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/to_do">
+
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/teal_700"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/taskshowTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text=" A Simple Task. time limit per test. 5 seconds. memory limit per test ... This task is very simple. Given a string S of length n and q queries each query"
+                    android:textColor="@color/white">
+
+                </TextView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/motivation_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            android:paddingTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/motivation">
+
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/teal_700"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text=" A Simple Task. time limit per test. 5 seconds. memory limit per test ... This task is very simple. Given a string S of length n and q queries each query"
+                    android:textColor="@color/white">
+
+                </TextView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            android:paddingTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/motivation_layout"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/document">
+
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/teal_700"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text=" A Simple Task. time limit per test. 5 seconds. memory limit per test ... This task is very simple. Given a string S of length n and q queries each query"
+                    android:textColor="@color/white">
+
+                </TextView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>
