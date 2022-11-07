@@ -180,7 +180,7 @@ public class MainTimePage<addiction> extends AppCompatActivity {
     private void readRandomInspiration() throws IOException {
         DatabaseHelper dbHelp = new DatabaseHelper(this);
 
-        int random = (int) (Math.random()*57);
+        int random = (int) ((Math.random()*56)+1);
         String resource = dbHelp.selectRandomInspiration(random);
 
         inspiratinTextview.setText(resource);
@@ -282,7 +282,8 @@ public class MainTimePage<addiction> extends AppCompatActivity {
             return true;
         }
         if (item.getItemId() == R.id.aboutUsID) {
-            Toast.makeText(this, "About us menu", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainTimePage.this, AboutUs.class);
+            startActivity(intent);
             return true;
         }
         if (item.getItemId() == R.id.otherAddiction) {
